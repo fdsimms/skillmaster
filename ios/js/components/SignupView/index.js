@@ -4,7 +4,7 @@ import {
   View,
   TextInput,
   TouchableHighlight,
-  ActivityIndicatorIOS
+  ActivityIndicator
 } from "react-native";
 
 import styles from "./stylesheet";
@@ -80,7 +80,7 @@ export default class SignupView extends Component {
           <Text style={styles.buttonText}>Submit</Text>
         </TouchableHighlight>
         {this.state.showProgress &&
-          <ActivityIndicatorIOS
+          <ActivityIndicator
             animating={this.state.showProgress}
             size="large"
           />
