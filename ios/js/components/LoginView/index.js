@@ -55,7 +55,7 @@ export default class LoginView extends Component {
           placeholder="Password"
           onChangeText={(text) => this.setState({ password: text })}
         />
-        <TouchableHighlight>
+        <TouchableHighlight style={styles.button}>
           <Text style={styles.buttonText}>Submit</Text>
         </TouchableHighlight>
         {this.state.showProgress &&
