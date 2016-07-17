@@ -1,12 +1,12 @@
 import React from "react";
 import { AppRegistry, NavigatorIOS } from "react-native";
-import LoginView from "./ios/js/components/LoginView";
+import SplashPage from "./ios/js/components/SplashPage";
 
 const Skillmaster = () =>
   <NavigatorIOS
     initialRoute={{
-      title: "Login",
-      component: LoginView
+      title: "Skillmaster",
+      component: SplashPage
     }}
     style={{ flex: 1 }}
   />;

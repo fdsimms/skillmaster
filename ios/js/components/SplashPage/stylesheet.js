@@ -8,12 +8,10 @@ const styles = StyleSheet.create({
     backgroundColor: "#F5FCFF",
     padding: 10
   },
-  input: {
-    height: 50,
-    borderWidth: 1,
-    marginTop: 5,
-    borderColor: "#DDD",
-    padding: 4
+  logo: {
+    fontSize: 20,
+    textAlign: "center",
+    margin: 10
   },
   button: {
     height: 50,

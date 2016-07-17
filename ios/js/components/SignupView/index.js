@@ -9,7 +9,7 @@ import {
 
 import styles from "./stylesheet";
 
-export default class LoginView extends Component {
+export default class SignupView extends Component {
   constructor(props) {
     super(props);
     this.state = { showProgress: false };
@@ -18,8 +18,8 @@ export default class LoginView extends Component {
 
   onPressSubmit() {
     this.setState({ showProgress: true });
-    // TODO make sure this actually reflects what api needs
-    fetch("http://localhost:3000/api/sessions", {
+    // TODO this will need to fetch from production api
+    fetch("http://localhost:3000/api/users", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -27,6 +27,9 @@ export default class LoginView extends Component {
       },
       body: JSON.stringify({
         user: {
+          nickname: this.state.nickname,
+          fname: this.state.fname,
+          lname: this.state.lname,
           password: this.state.password,
           email: this.state.email
         }
@@ -43,7 +46,22 @@ export default class LoginView extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text> Sign In </Text>
+        <Text style={styles.logo}> Sign Up </Text>
+        <TextInput
+          style={styles.input}
+          placeholder="First Name"
+          onChangeText={(text) => this.setState({ fname: text })}
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="Last Name"
+          onChangeText={(text) => this.setState({ lname: text })}
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="Nickname"
+          onChangeText={(text) => this.setState({ nickname: text })}
+        />
         <TextInput
           style={styles.input}
           placeholder="Email"
@@ -55,7 +73,10 @@ export default class LoginView extends Component {
           placeholder="Password"
           onChangeText={(text) => this.setState({ password: text })}
         />
-        <TouchableHighlight>
+        <TouchableHighlight
+          onPress={this.onPressSubmit}
+          style={styles.button}
+        >
           <Text style={styles.buttonText}>Submit</Text>
         </TouchableHighlight>
         {this.state.showProgress &&
