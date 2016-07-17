@@ -1,9 +1,14 @@
 import React from "react";
-import {
-  AppRegistry
-} from "react-native";
+import { AppRegistry, NavigatorIOS } from "react-native";
 import LoginView from "./ios/js/components/LoginView";
 
-const Skillmaster = () => <LoginView />;
+const Skillmaster = () =>
+  <NavigatorIOS
+    initialRoute={{
+      title: "Login",
+      component: LoginView
+    }}
+    style={{ flex: 1 }}
+  />;
 
 AppRegistry.registerComponent("Skillmaster", () => Skillmaster);
