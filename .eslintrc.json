@@ -5,6 +5,7 @@
     ],
     "rules": {
       "comma-dangle": ["error", "never"],
-      "quotes": [2, "double", {"avoidEscape": true, "allowTemplateLiterals": true}]
+      "quotes": [2, "double", {"avoidEscape": true, "allowTemplateLiterals": true}],
+      "arrow-body-style": ["error", "as-needed"]
     }
 }
