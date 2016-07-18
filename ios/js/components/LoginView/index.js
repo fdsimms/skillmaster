@@ -19,14 +19,14 @@ export default class LoginView extends Component {
   onPressSubmit() {
     this.setState({ showProgress: true });
     // TODO make sure this actually reflects what api needs
-    fetch("http://localhost:3000/api/sessions", {
+    fetch("http://localhost:3000/api/session", {
       method: "POST",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        user: {
+        session: {
           password: this.state.password,
           email: this.state.email
         }
@@ -55,7 +55,7 @@ export default class LoginView extends Component {
           placeholder="Password"
           onChangeText={(text) => this.setState({ password: text })}
         />
-        <TouchableHighlight style={styles.button}>
+        <TouchableHighlight onPress={this.onPressSubmit} style={styles.button}>
           <Text style={styles.buttonText}>Submit</Text>
         </TouchableHighlight>
         {this.state.showProgress &&
