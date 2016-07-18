@@ -18,7 +18,6 @@ export default class LoginView extends Component {
 
   onPressSubmit() {
     this.setState({ showProgress: true });
-    // TODO make sure this actually reflects what api needs
     fetch("http://localhost:3000/api/session", {
       method: "POST",
       headers: {
