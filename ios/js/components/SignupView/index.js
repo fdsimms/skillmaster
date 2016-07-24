@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import {
   Text,
   View,
@@ -7,9 +8,11 @@ import {
   ActivityIndicator
 } from "react-native";
 
+import { updateErrorMessage } from "../../actions";
+import ErrorHandler from "../ErrorHandler";
 import styles from "./stylesheet";
 
-export default class SignupView extends Component {
+class SignupView extends Component {
   constructor(props) {
     super(props);
     this.state = { showProgress: false };
@@ -36,17 +39,17 @@ export default class SignupView extends Component {
       })
     })
     .then(response => {
-      console.log(response);
+      if (!response.ok) { throw Error(response.statusText); }
     })
-    .finally(() => {
-      this.setState({ showProgress: false });
-    });
+    .catch(() => this.props.dispatch(updateErrorMessage("Error")))
+    .finally(() => this.setState({ showProgress: false }));
   }
 
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.logo}> Sign Up </Text>
+        <ErrorHandler />
+        <Text style={styles.logo}>Sign Up</Text>
         <TextInput
           style={styles.input}
           placeholder="First Name"
@@ -89,3 +92,5 @@ export default class SignupView extends Component {
     );
   }
 }
+
+export default connect()(SignupView);
