@@ -17,7 +17,7 @@ function mapStateToProps(state) {
 
 Spinner.propTypes = {
   showSpinner: PropTypes.bool.isRequired,
-  size: PropTypes.string.isRequired
+  size: PropTypes.string
 };
 
 export default connect(mapStateToProps)(Spinner);
