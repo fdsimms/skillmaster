@@ -4,11 +4,11 @@ import {
   Text,
   View,
   TextInput,
-  TouchableHighlight,
-  ActivityIndicator
+  TouchableHighlight
 } from "react-native";
 
-import { updateErrorMessage } from "../../actions";
+import Spinner from "../Spinner";
+import { updateErrorMessage, showSpinner, hideSpinner } from "../../actions";
 import ErrorHandler from "../ErrorHandler";
 import styles from "./stylesheet";
 
@@ -20,8 +20,8 @@ class SignupView extends Component {
   }
 
   onPressSubmit() {
-    this.setState({ showProgress: true });
-    // TODO this will need to fetch from production api
+    this.props.dispatch(showSpinner());
+
     fetch("http://localhost:3000/api/users", {
       method: "POST",
       headers: {
@@ -42,7 +42,7 @@ class SignupView extends Component {
       if (!response.ok) { throw Error(response.statusText); }
     })
     .catch(() => this.props.dispatch(updateErrorMessage("Error")))
-    .finally(() => this.setState({ showProgress: false }));
+    .finally(() => this.props.dispatch(hideSpinner()))
   }
 
   render() {
@@ -82,12 +82,7 @@ class SignupView extends Component {
         >
           <Text style={styles.buttonText}>Submit</Text>
         </TouchableHighlight>
-        {this.state.showProgress &&
-          <ActivityIndicator
-            animating={this.state.showProgress}
-            size="large"
-          />
-        }
+        <Spinner />
       </View>
     );
   }
