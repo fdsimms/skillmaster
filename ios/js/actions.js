@@ -1,17 +1,17 @@
-export const HIDE_PROGRESS = "HIDE_PROGRESS";
-export const SHOW_PROGRESS = "SHOW_PROGRESS";
+export const HIDE_SPINNER = "HIDE_SPINNER";
+export const SHOW_SPINNER = "SHOW_SPINNER";
 export const UPDATE_ERROR_MESSAGE = "UPDATE_ERROR_MESSAGE";
 export const RESET_ERROR_MESSAGE = "RESET_ERROR_MESSAGE";
 
-export function showProgress() {
+export function showSpinner() {
   return {
-    type: SHOW_PROGRESS
+    type: SHOW_SPINNER
   };
 }
 
-export function hideProgress() {
+export function hideSpinner() {
   return {
-    type: HIDE_PROGRESS
+    type: HIDE_SPINNER
   };
 }
 

@@ -1,16 +1,16 @@
 import { combineReducers } from "redux";
 import {
-  SHOW_PROGRESS,
-  HIDE_PROGRESS,
+  SHOW_SPINNER,
+  HIDE_SPINNER,
   UPDATE_ERROR_MESSAGE,
   RESET_ERROR_MESSAGE
 } from "./actions";
 
-function displayProgress(state = false, action) {
+function showSpinner(state = false, action) {
   switch (action.type) {
-    case HIDE_PROGRESS:
+    case HIDE_SPINNER:
       return false;
-    case SHOW_PROGRESS:
+    case SHOW_SPINNER:
       return true;
     default:
       return state;
@@ -29,7 +29,7 @@ function errorMessage(state = "", action) {
 }
 
 const rootReducer = combineReducers({
-  displayProgress,
+  showSpinner,
   errorMessage
 });
 
