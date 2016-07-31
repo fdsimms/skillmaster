@@ -3,7 +3,8 @@ import {
   SHOW_SPINNER,
   HIDE_SPINNER,
   UPDATE_ERROR_MESSAGE,
-  RESET_ERROR_MESSAGE
+  RESET_ERROR_MESSAGE,
+  RECEIVE_CURRENT_USER
 } from "./actions";
 
 function showSpinner(state = false, action) {
@@ -28,9 +29,19 @@ function errorMessage(state = "", action) {
   }
 }
 
+function currentUser(state = "", action) {
+  switch (action.type) {
+    case RECEIVE_CURRENT_USER:
+      return action.currentUser;
+    default:
+      return state;
+  }
+}
+
 const rootReducer = combineReducers({
   showSpinner,
-  errorMessage
+  errorMessage,
+  currentUser
 });
 
 export default rootReducer;
