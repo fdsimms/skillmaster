@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, PropTypes } from "react";
 import { connect } from "react-redux";
 import {
   Text,
@@ -47,5 +47,9 @@ class LoginView extends Component {
     );
   }
 }
+
+LoginView.propTypes = {
+  dispatch: PropTypes.func.isRequired
+};
 
 export default connect()(LoginView);
