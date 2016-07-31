@@ -8,7 +8,7 @@ import {
 } from "react-native";
 
 import Spinner from "../Spinner";
-import { updateErrorMessage, showSpinner, hideSpinner } from "../../actions";
+import { createUser } from "../../apiUtils";
 import ErrorHandler from "../ErrorHandler";
 import styles from "./stylesheet";
 
@@ -20,29 +20,14 @@ class SignupView extends Component {
   }
 
   onPressSubmit() {
-    this.props.dispatch(showSpinner());
-
-    fetch("http://localhost:3000/api/users", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        user: {
-          nickname: this.state.nickname,
-          fname: this.state.fname,
-          lname: this.state.lname,
-          password: this.state.password,
-          email: this.state.email
-        }
-      })
-    })
-    .then(response => {
-      if (!response.ok) { throw Error(response.statusText); }
-    })
-    .catch(() => this.props.dispatch(updateErrorMessage("Error")))
-    .finally(() => this.props.dispatch(hideSpinner()))
+    const userParams = {
+      nickname: this.state.nickname,
+      fname: this.state.fname,
+      lname: this.state.lname,
+      password: this.state.password,
+      email: this.state.email
+    };
+    this.props.dispatch(createUser(userParams));
   }
 
   render() {
