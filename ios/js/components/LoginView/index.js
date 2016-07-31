@@ -8,7 +8,7 @@ import {
 } from "react-native";
 
 import Spinner from "../Spinner";
-import { updateErrorMessage, showSpinner, hideSpinner } from "../../actions";
+import { createSession } from "../../apiUtils";
 import ErrorHandler from "../ErrorHandler";
 import styles from "./stylesheet";
 
@@ -20,27 +20,7 @@ class LoginView extends Component {
   }
 
   onPressSubmit() {
-    this.props.dispatch(showSpinner());
-    fetch("http://localhost:3000/api/session", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        session: {
-          password: this.state.password,
-          email: this.state.email
-        }
-      })
-    })
-    .then(response => {
-      if (!response.ok) { throw Error(response.statusText); }
-    })
-    .catch(() => this.props.dispatch(updateErrorMessage("Error")))
-    .finally(() => {
-      this.props.dispatch(hideSpinner());
-    });
+    this.props.dispatch(createSession(this.state.email, this.state.password));
   }
 
   render() {
