@@ -7,6 +7,9 @@ import {
 import SignupView from "../SignupView";
 import LoginView from "../LoginView";
 import styles from "./stylesheet";
+import { connect } from "react-redux";
+
+import { changeScene } from "../../actions";
 
 class SplashPage extends Component {
   constructor(props) {
@@ -16,17 +19,19 @@ class SplashPage extends Component {
   }
 
   pushSignupView() {
-    this.props.navigator.push({
+    const { navigator, dispatch } = this.props;
+    dispatch(changeScene({
       title: "Sign Up",
-      component: SignupView
-    });
+      component: <SignupView />
+    }, navigator));
   }
 
   pushLoginView() {
-    this.props.navigator.push({
+    const { navigator, dispatch } = this.props;
+    dispatch(changeScene({
       title: "Log In",
-      component: LoginView
-    });
+      component: <LoginView />
+    }, navigator));
   }
 
   render() {
@@ -50,7 +55,8 @@ class SplashPage extends Component {
 }
 
 SplashPage.propTypes = {
+  dispatch: PropTypes.func.isRequired,
   navigator: PropTypes.object.isRequired
 };
 
-export default SplashPage;
+export default connect()(SplashPage);
