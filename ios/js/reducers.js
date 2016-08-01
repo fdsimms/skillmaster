@@ -4,8 +4,10 @@ import {
   HIDE_SPINNER,
   UPDATE_ERROR_MESSAGE,
   RESET_ERROR_MESSAGE,
-  RECEIVE_CURRENT_USER
+  RECEIVE_CURRENT_USER,
+  CHANGE_SCENE
 } from "./actions";
+import SplashPage from "./components/SplashPage";
 
 function showSpinner(state = false, action) {
   switch (action.type) {
@@ -38,10 +40,20 @@ function currentUser(state = "", action) {
   }
 }
 
+function currentScene(state = { title: "Skillmaster", component: SplashPage }, action) {
+  switch (action.type) {
+    case CHANGE_SCENE:
+      return action.currentScene;
+    default:
+      return state;
+  }
+}
+
 const rootReducer = combineReducers({
   showSpinner,
   errorMessage,
-  currentUser
+  currentUser,
+  currentScene
 });
 
 export default rootReducer;
