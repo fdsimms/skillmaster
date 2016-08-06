@@ -15,7 +15,6 @@ import styles from "./stylesheet";
 class SignupView extends Component {
   constructor(props) {
     super(props);
-    this.state = { showProgress: false };
     this.onPressSubmit = this.onPressSubmit.bind(this);
   }
 
