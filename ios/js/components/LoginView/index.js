@@ -19,7 +19,11 @@ class LoginView extends Component {
   }
 
   onPressSubmit() {
-    this.props.dispatch(createSession(this.state.email, this.state.password));
+    const sessionParams = {
+      email: this.state.email,
+      password: this.state.password
+    };
+    this.props.dispatch(createSession(sessionParams, this.props.navigator));
   }
 
   render() {
@@ -51,7 +55,8 @@ class LoginView extends Component {
 }
 
 LoginView.propTypes = {
-  dispatch: PropTypes.func.isRequired
+  dispatch: PropTypes.func.isRequired,
+  navigator: PropTypes.object.isRequired
 };
 
 export default connect()(LoginView);

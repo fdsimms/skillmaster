@@ -26,7 +26,7 @@ class SignupView extends Component {
       password: this.state.password,
       email: this.state.email
     };
-    this.props.dispatch(createUser(userParams));
+    this.props.dispatch(createUser(userParams, this.props.navigator));
   }
 
   render() {
@@ -74,7 +74,8 @@ class SignupView extends Component {
 
 
 SignupView.propTypes = {
-  dispatch: PropTypes.func.isRequired
+  dispatch: PropTypes.func.isRequired,
+  navigator: PropTypes.object.isRequired
 };
 
 export default connect()(SignupView);
