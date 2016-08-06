@@ -2,20 +2,29 @@ import React, { PropTypes, Component } from "react";
 import {
   Text,
   View,
-  TouchableHighlight
+  TouchableHighlight,
+  AsyncStorage
 } from "react-native";
 import SignupView from "../SignupView";
 import LoginView from "../LoginView";
 import styles from "./stylesheet";
 import { connect } from "react-redux";
 
-import { changeScene } from "../../actions";
+import { changeScene, receiveSkills } from "../../actions";
 
 class SplashPage extends Component {
   constructor(props) {
     super(props);
     this.pushSignupView = this.pushSignupView.bind(this);
     this.pushLoginView = this.pushLoginView.bind(this);
+  }
+
+  componentWillMount() {
+    AsyncStorage.getItem("skills").then(skills => {
+      if (skills) {
+        this.props.dispatch(receiveSkills(skills));
+      }
+    });
   }
 
   pushSignupView() {
