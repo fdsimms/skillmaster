@@ -11,9 +11,9 @@ const Spinner = ({ showSpinner, size = "large" }) => (
   ) : null
 );
 
-function mapStateToProps(state) {
-  return { showSpinner: state.showSpinner };
-}
+const mapStateToProps = (state) => (
+  { showSpinner: state.showSpinner }
+);
 
 Spinner.propTypes = {
   showSpinner: PropTypes.bool.isRequired,

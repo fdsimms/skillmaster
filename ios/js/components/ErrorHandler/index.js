@@ -8,9 +8,9 @@ const ErrorHandler = ({ message }) => (
   message ? <Text style={styles.text}>{message}</Text> : null
 );
 
-function mapStateToProps(state) {
-  return { message: state.errorMessage };
-}
+const mapStateToProps = (state) => (
+  { message: state.errorMessage }
+);
 
 ErrorHandler.propTypes = { message: PropTypes.string.isRequired };
 

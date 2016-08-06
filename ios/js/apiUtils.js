@@ -6,7 +6,7 @@ import {
 } from "./actions";
 
 export function createSession(email, password) {
-  return dispatch => {
+  return (dispatch) => {
     dispatch(showSpinner());
     fetch("http://localhost:3000/api/session", {
       method: "POST",
@@ -24,14 +24,12 @@ export function createSession(email, password) {
     })
     .then(json => { dispatch(receiveCurrentUser(json)); })
     .catch(() => dispatch(updateErrorMessage("Error")))
-    .finally(() => {
-      dispatch(hideSpinner());
-    });
+    .finally(() => { dispatch(hideSpinner()); });
   };
 }
 
 export function createUser(userParams) {
-  return dispatch => {
+  return (dispatch) => {
     dispatch(showSpinner());
     fetch("http://localhost:3000/api/users", {
       method: "POST",

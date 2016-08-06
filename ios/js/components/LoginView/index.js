@@ -39,7 +39,10 @@ class LoginView extends Component {
           placeholder="Password"
           onChangeText={(text) => this.setState({ password: text })}
         />
-        <TouchableHighlight onPress={this.onPressSubmit} style={styles.button}>
+        <TouchableHighlight
+          onPress={this.onPressSubmit}
+          style={styles.button}
+        >
           <Text style={styles.buttonText}>Submit</Text>
         </TouchableHighlight>
         <Spinner />
