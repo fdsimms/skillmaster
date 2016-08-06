@@ -4,9 +4,11 @@ import {
   hideSpinner,
   updateErrorMessage,
   receiveCurrentUser,
-  changeScene
+  changeScene,
+  receiveSkills
 } from "./actions";
 import SkillsView from "./components/SkillsView";
+import AsyncStorage from "redux";
 
 export function createSession(sessionParams, navigator) {
   return (dispatch) => {
@@ -70,5 +72,28 @@ export function createUser(userParams, navigator) {
     })
     .catch(() => dispatch(updateErrorMessage("Error")))
     .finally(() => dispatch(hideSpinner()));
+  };
+}
+
+export function fetchSkills() {
+  return (dispatch) => {
+    dispatch(showSpinner());
+    fetch("http://localhost:3000/api/skills", {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      }
+    })
+    .then(response => {
+      if (!response.ok) { throw Error(response.statusText); }
+      return response.json();
+    })
+    .then(json => {
+      dispatch(receiveSkills(json));
+      AsyncStorage.setItem("skills", json);
+    })
+    .catch(() => dispatch(updateErrorMessage("Error")))
+    .finally(() => { dispatch(hideSpinner()); });
   };
 }
