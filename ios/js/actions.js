@@ -4,6 +4,7 @@ export const UPDATE_ERROR_MESSAGE = "UPDATE_ERROR_MESSAGE";
 export const RESET_ERROR_MESSAGE = "RESET_ERROR_MESSAGE";
 export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
 export const CHANGE_SCENE = "CHANGE_SCENE";
+export const RECEIVE_SKILLS = "RECEIVE_SKILLS";
 
 export function showSpinner() {
   return {
@@ -42,5 +43,12 @@ export function changeScene(newScene, navigator) {
     type: CHANGE_SCENE,
     currentScene: newScene,
     navigator
+  };
+}
+
+export function receiveSkills(skills) {
+  return {
+    type: RECEIVE_SKILLS,
+    skills
   };
 }
