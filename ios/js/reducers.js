@@ -5,7 +5,8 @@ import {
   UPDATE_ERROR_MESSAGE,
   RESET_ERROR_MESSAGE,
   RECEIVE_CURRENT_USER,
-  CHANGE_SCENE
+  CHANGE_SCENE,
+  RECEIVE_SKILLS
 } from "./actions";
 import SplashPage from "./components/SplashPage";
 
@@ -49,11 +50,21 @@ function currentScene(state = { title: "Skillmaster", component: SplashPage }, a
   }
 }
 
+function skills(state = [], action) {
+  switch (action.type) {
+    case RECEIVE_SKILLS:
+      return action.skills;
+    default:
+      return state;
+  }
+}
+
 const rootReducer = combineReducers({
   showSpinner,
   errorMessage,
   currentUser,
-  currentScene
+  currentScene,
+  skills
 });
 
 export default rootReducer;
