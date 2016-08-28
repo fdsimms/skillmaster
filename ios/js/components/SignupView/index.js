@@ -7,6 +7,7 @@ import {
   TouchableHighlight
 } from "react-native";
 
+import { resetErrorMessage } from "../../actions";
 import Spinner from "../Spinner";
 import { createUser } from "../../apiUtils";
 import ErrorHandler from "../ErrorHandler";
@@ -16,6 +17,12 @@ class SignupView extends Component {
   constructor(props) {
     super(props);
     this.onPressSubmit = this.onPressSubmit.bind(this);
+  }
+
+  componentDidMount() {
+    if (this.props.errorMessage) {
+      this.props.dispatch(resetErrorMessage());
+    }
   }
 
   onPressSubmit() {
@@ -72,10 +79,13 @@ class SignupView extends Component {
   }
 }
 
+const mapStateToProps = (state) => (
+  { errorMessage: state.errorMessage }
+);
 
 SignupView.propTypes = {
   dispatch: PropTypes.func.isRequired,
   navigator: PropTypes.object.isRequired
 };
 
-export default connect()(SignupView);
+export default connect(mapStateToProps)(SignupView);
