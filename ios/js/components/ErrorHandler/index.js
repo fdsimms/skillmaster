@@ -4,8 +4,8 @@ import { Text } from "react-native";
 
 import styles from "./stylesheet";
 
-const ErrorHandler = ({ message }) => (
-  message ? <Text style={styles.text}>{message}</Text> : null
+const ErrorHandler = ({ message, textStyle = styles.text}) => (
+  message ? <Text style={textStyle}>{message}</Text> : null
 );
 
 const mapStateToProps = (state) => (
