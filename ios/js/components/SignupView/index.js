@@ -63,7 +63,7 @@ class SignupView extends Component {
         />
         <TextInput
           style={styles.input}
-          secureTextEntry
+          secureTextEntry={true}
           placeholder="Password"
           onChangeText={(text) => this.setState({ password: text })}
         />
