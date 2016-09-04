@@ -7,6 +7,7 @@ const Spinner = ({ showSpinner, size = "large" }) => (
     <ActivityIndicator
       animating={showSpinner}
       size={size}
+      color="#FFFFFF"
     />
   ) : null
 );
@@ -17,7 +18,8 @@ const mapStateToProps = (state) => (
 
 Spinner.propTypes = {
   showSpinner: PropTypes.bool.isRequired,
-  size: PropTypes.string
+  size: PropTypes.string,
+  color: PropTypes.string
 };
 
 export default connect(mapStateToProps)(Spinner);
