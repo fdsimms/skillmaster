@@ -39,7 +39,7 @@ class SkillsView extends Component {
 
   render() {
     return (
-      <View style={{ flex: 1, justifyContent: "center", padding: 10, marginTop: 200 }}>
+      <View style={{ flex: 1, justifyContent: "center", padding: 10, marginTop: 150 }}>
         <Skills skills={this.props.skills} />
       </View>
     );

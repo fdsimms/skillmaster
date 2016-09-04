@@ -6,7 +6,7 @@ import {
   AsyncStorage
 } from "react-native";
 import SignupView from "../SignupView";
-import LoginView from "../LoginView";
+import SigninView from "../SigninView";
 import globalStyles from "../../styles/global";
 import { connect } from "react-redux";
 
@@ -16,7 +16,7 @@ class SplashPage extends Component {
   constructor(props) {
     super(props);
     this.pushSignupView = this.pushSignupView.bind(this);
-    this.pushLoginView = this.pushLoginView.bind(this);
+    this.pushSigninView = this.pushSigninView.bind(this);
   }
 
   componentWillMount() {
@@ -35,11 +35,11 @@ class SplashPage extends Component {
     }, navigator));
   }
 
-  pushLoginView() {
+  pushSigninView() {
     const { navigator, dispatch } = this.props;
     dispatch(changeScene({
       title: "Log In",
-      component: <LoginView />
+      component: <SigninView />
     }, navigator));
   }
 
@@ -54,7 +54,7 @@ class SplashPage extends Component {
           <Text style={globalStyles.buttonText}>Get Started</Text>
         </TouchableHighlight>
         <TouchableHighlight
-          onPress={this.pushLoginView}
+          onPress={this.pushSigninView}
         >
           <Text style={globalStyles.basicText}>
               Already have an account?

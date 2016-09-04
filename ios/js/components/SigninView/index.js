@@ -13,7 +13,7 @@ import { createSession } from "../../apiUtils";
 import ErrorHandler from "../ErrorHandler";
 import globalStyles from "../../styles/global";
 
-class LoginView extends Component {
+class SigninView extends Component {
   constructor(props) {
     super(props);
     this.onPressSubmit = this.onPressSubmit.bind(this);
@@ -66,9 +66,9 @@ const mapStateToProps = (state) => (
   { errorMessage: state.errorMessage }
 );
 
-LoginView.propTypes = {
+SigninView.propTypes = {
   dispatch: PropTypes.func.isRequired,
   navigator: PropTypes.object.isRequired
 };
 
-export default connect(mapStateToProps)(LoginView);
+export default connect(mapStateToProps)(SigninView);
