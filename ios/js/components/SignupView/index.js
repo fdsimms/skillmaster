@@ -17,6 +17,13 @@ class SignupView extends Component {
   constructor(props) {
     super(props);
     this.onPressSubmit = this.onPressSubmit.bind(this);
+    this.state = {
+      nickname: null,
+      fname: null,
+      lname: null,
+      password: null,
+      email: null
+    };
   }
 
   componentDidMount() {

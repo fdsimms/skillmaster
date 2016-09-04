@@ -17,6 +17,7 @@ class LoginView extends Component {
   constructor(props) {
     super(props);
     this.onPressSubmit = this.onPressSubmit.bind(this);
+    this.state = { password: null, email: null };
   }
 
   componentDidMount() {
