@@ -11,7 +11,7 @@ import { resetErrorMessage } from "../../actions";
 import Spinner from "../Spinner";
 import { createSession } from "../../apiUtils";
 import ErrorHandler from "../ErrorHandler";
-import styles from "./stylesheet";
+import globalStyles from "../../styles/global";
 
 class LoginView extends Component {
   constructor(props) {
@@ -35,25 +35,25 @@ class LoginView extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <View style={globalStyles.container}>
         <ErrorHandler />
-        <Text> Sign In </Text>
+        <Text style={globalStyles.headerText}> Sign In </Text>
         <TextInput
-          style={styles.input}
+          style={globalStyles.input}
           placeholder="Email"
           onChangeText={(text) => this.setState({ email: text })}
         />
         <TextInput
-          style={styles.input}
+          style={globalStyles.input}
           secureTextEntry={true}
           placeholder="Password"
           onChangeText={(text) => this.setState({ password: text })}
         />
         <TouchableHighlight
           onPress={this.onPressSubmit}
-          style={styles.button}
+          style={globalStyles.button}
         >
-          <Text style={styles.buttonText}>Submit</Text>
+          <Text style={globalStyles.buttonText}>Submit</Text>
         </TouchableHighlight>
         <Spinner />
       </View>

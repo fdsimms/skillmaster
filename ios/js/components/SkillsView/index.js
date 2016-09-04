@@ -5,7 +5,7 @@ import {
   Text,
   View
 } from "react-native";
-import styles from "./stylesheet";
+import globalStyles from "../../styles/global";
 import { fetchSkills } from "../../apiUtils";
 
 class SkillsView extends Component {
@@ -19,16 +19,18 @@ class SkillsView extends Component {
     const { skills } = this.props;
     return skills.length > 0 && (
       skills.map(skill => (
-        <Text key={skill.id} style={styles.logo}>{skill.name}</Text>
+        <Text key={skill.id} style={globalStyles.headerText}>
+          {skill.name}
+        </Text>
       ))
     );
   }
 
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.logo}>Skills</Text>
-        <View style={styles.container}>
+      <View style={globalStyles.container}>
+        <Text style={globalStyles.headerText}>Skills</Text>
+        <View style={globalStyles.container}>
           {this.skills}
         </View>
       </View>

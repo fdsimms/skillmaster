@@ -11,7 +11,7 @@ import { resetErrorMessage } from "../../actions";
 import Spinner from "../Spinner";
 import { createUser } from "../../apiUtils";
 import ErrorHandler from "../ErrorHandler";
-import styles from "./stylesheet";
+import globalStyles from "../../styles/global";
 
 class SignupView extends Component {
   constructor(props) {
@@ -38,40 +38,40 @@ class SignupView extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <View style={globalStyles.container}>
         <ErrorHandler />
-        <Text style={styles.logo}>Sign Up</Text>
+        <Text style={globalStyles.headerText}>Sign Up</Text>
         <TextInput
-          style={styles.input}
+          style={globalStyles.input}
           placeholder="First Name"
           onChangeText={(text) => this.setState({ fname: text })}
         />
         <TextInput
-          style={styles.input}
+          style={globalStyles.input}
           placeholder="Last Name"
           onChangeText={(text) => this.setState({ lname: text })}
         />
         <TextInput
-          style={styles.input}
+          style={globalStyles.input}
           placeholder="Nickname"
           onChangeText={(text) => this.setState({ nickname: text })}
         />
         <TextInput
-          style={styles.input}
+          style={globalStyles.input}
           placeholder="Email"
           onChangeText={(text) => this.setState({ email: text })}
         />
         <TextInput
-          style={styles.input}
+          style={globalStyles.input}
           secureTextEntry={true}
           placeholder="Password"
           onChangeText={(text) => this.setState({ password: text })}
         />
         <TouchableHighlight
           onPress={this.onPressSubmit}
-          style={styles.button}
+          style={globalStyles.button}
         >
-          <Text style={styles.buttonText}>Submit</Text>
+          <Text style={globalStyles.buttonText}>Submit</Text>
         </TouchableHighlight>
         <Spinner />
       </View>
