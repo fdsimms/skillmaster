@@ -1,12 +1,34 @@
 import React, { PropTypes, Component } from "react";
 import { connect } from "react-redux";
-
 import {
   Text,
-  View
+  View,
+  ListView
 } from "react-native";
-import globalStyles from "../../styles/global";
+
+import SkillCircle from "./SkillCircle";
 import { fetchSkills } from "../../apiUtils";
+
+const Skill = ({ skill }) => (
+  <View
+      key={skill.id}
+      style={{ alignSelf: "center", justifyContent: "center" }}>
+    <SkillCircle />
+    <Text style={{ color: "#AAAAAA", fontSize: 16, textAlign: "center", paddingBottom: 10 }}>
+      {skill.name}
+    </Text>
+  </View>
+);
+
+const Skills = ({ skills }) => {
+  const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
+  return skills.length > 0 ? (
+    <ListView
+      dataSource={ds.cloneWithRows(skills)}
+      renderRow={skill => <Skill skill={skill} />}
+    />
+  ) : null;
+};
 
 class SkillsView extends Component {
   componentDidMount() {
@@ -15,24 +37,10 @@ class SkillsView extends Component {
     }
   }
 
-  get skills() {
-    const { skills } = this.props;
-    return skills.length > 0 && (
-      skills.map(skill => (
-        <Text key={skill.id} style={globalStyles.headerText}>
-          {skill.name}
-        </Text>
-      ))
-    );
-  }
-
   render() {
     return (
-      <View style={globalStyles.container}>
-        <Text style={globalStyles.headerText}>Skills</Text>
-        <View style={globalStyles.container}>
-          {this.skills}
-        </View>
+      <View style={{ flex: 1, justifyContent: "center", padding: 10, marginTop: 200 }}>
+        <Skills skills={this.props.skills} />
       </View>
     );
   }
