@@ -12,50 +12,50 @@ import SplashPage from "./components/SplashPage";
 
 function showSpinner(state = false, action) {
   switch (action.type) {
-    case HIDE_SPINNER:
-      return false;
-    case SHOW_SPINNER:
-      return true;
-    default:
-      return state;
+  case HIDE_SPINNER:
+    return false;
+  case SHOW_SPINNER:
+    return true;
+  default:
+    return state;
   }
 }
 
 function errorMessage(state = "", action) {
   switch (action.type) {
-    case UPDATE_ERROR_MESSAGE:
-      return action.errorMessage;
-    case RESET_ERROR_MESSAGE:
-      return "";
-    default:
-      return state;
+  case UPDATE_ERROR_MESSAGE:
+    return action.errorMessage;
+  case RESET_ERROR_MESSAGE:
+    return "";
+  default:
+    return state;
   }
 }
 
 function currentUser(state = "", action) {
   switch (action.type) {
-    case RECEIVE_CURRENT_USER:
-      return action.currentUser;
-    default:
-      return state;
+  case RECEIVE_CURRENT_USER:
+    return action.currentUser;
+  default:
+    return state;
   }
 }
 
 function currentScene(state = { title: "Skillmaster", component: SplashPage }, action) {
   switch (action.type) {
-    case CHANGE_SCENE:
-      return action.currentScene;
-    default:
-      return state;
+  case CHANGE_SCENE:
+    return action.currentScene;
+  default:
+    return state;
   }
 }
 
 function skills(state = [], action) {
   switch (action.type) {
-    case RECEIVE_SKILLS:
-      return action.skills;
-    default:
-      return state;
+  case RECEIVE_SKILLS:
+    return action.skills;
+  default:
+    return state;
   }
 }
 
