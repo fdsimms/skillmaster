@@ -97,3 +97,26 @@ export function fetchSkills() {
     .finally(() => { dispatch(hideSpinner()); });
   };
 }
+
+export function fetchSkill(skillId) {
+  return (dispatch) => {
+    dispatch(showSpinner());
+    fetch(`http://localhost:3000/api/skills/${skillId}`, {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      }
+    })
+    .then(response => {
+      if (!response.ok) { throw Error(response.statusText); }
+      return response.json();
+    })
+    .then(json => {
+      dispatch(receiveSkills(json));
+      AsyncStorage.setItem(`skills/${skillId}`, json);
+    })
+    .catch(() => dispatch(updateErrorMessage("Error")))
+    .finally(() => { dispatch(hideSpinner()); });
+  };
+}
