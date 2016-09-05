@@ -54,7 +54,7 @@ class SigninView extends Component {
           onPress={this.onPressSubmit}
           style={globalStyles.button}
         >
-          <Text style={globalStyles.buttonText}>Submit</Text>
+          <Text style={globalStyles.buttonText}>SUBMIT</Text>
         </TouchableHighlight>
         <Spinner />
       </View>

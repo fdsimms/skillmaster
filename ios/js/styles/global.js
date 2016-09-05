@@ -29,7 +29,8 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: 20,
     color: "#FFFFFF",
-    alignSelf: "center"
+    alignSelf: "center",
+    fontWeight: "bold"
   },
   basicText: {
     fontSize: 16,

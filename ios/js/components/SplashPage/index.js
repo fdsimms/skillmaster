@@ -51,7 +51,7 @@ class SplashPage extends Component {
           onPress={this.pushSignupView}
           style={globalStyles.button}
         >
-          <Text style={globalStyles.buttonText}>Get Started</Text>
+          <Text style={globalStyles.buttonText}>GET STARTED </Text>
         </TouchableHighlight>
         <TouchableHighlight
           onPress={this.pushSigninView}
