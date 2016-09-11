@@ -1,11 +1,14 @@
 import React, { PropTypes } from "react";
 import { connect } from "react-redux";
 import { Text } from "react-native";
+import { styles as s } from "react-native-style-tachyons";
 
-import styles from "./stylesheet";
-
-const ErrorHandler = ({ message, textStyle = styles.text }) => (
-  message ? <Text style={textStyle}>{message}</Text> : null
+const ErrorHandler = ({ message }) => (
+  message ? (
+    <Text style={[s.red]}>
+      {message}
+    </Text>
+  ) : null
 );
 
 const mapStateToProps = (state) => (
