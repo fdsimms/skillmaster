@@ -3,12 +3,13 @@ import { connect } from "react-redux";
 import {
   View,
 } from "react-native";
+import { gs } from "../../styles/global";
 
 class SkillView extends Component {
 
   render() {
     return (
-      <View style={{ flex: 1, justifyContent: "center", padding: 10, marginTop: 150 }} />
+      <View style={gs.container} />
     );
   }
 }
