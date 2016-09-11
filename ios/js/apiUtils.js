@@ -28,11 +28,6 @@ export function createSession(sessionParams) {
       return response.json();
     })
     .then(json => { dispatch(receiveCurrentUser(json)); })
-    .then(() => {
-      dispatch(changeScene({
-        title: "Skills", component: <SkillsView />
-      }, navigator));
-    })
     .catch(() => dispatch(updateErrorMessage("Error")))
     .finally(() => { dispatch(hideSpinner()); });
   };
@@ -62,11 +57,6 @@ export function createUser(userParams) {
       return response.json();
     })
     .then(json => dispatch(receiveCurrentUser(json)))
-    .then(() => {
-      dispatch(changeScene({
-        title: "Skills", component: <SkillsView />
-      }, navigator));
-    })
     .catch(() => dispatch(updateErrorMessage("Error")))
     .finally(() => dispatch(hideSpinner()));
   };

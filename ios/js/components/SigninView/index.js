@@ -7,9 +7,10 @@ import {
   TouchableHighlight
 } from "react-native";
 
-import { resetErrorMessage } from "../../actions";
+import { resetErrorMessage, changeScene } from "../../actions";
 import Spinner from "../Spinner";
 import { createSession } from "../../apiUtils";
+import SkillsView from "../SkillsView";
 import ErrorHandler from "../ErrorHandler";
 import { styles as s } from "react-native-style-tachyons";
 import { gs, fonts } from "../../styles/global";
@@ -32,7 +33,12 @@ class SigninView extends Component {
       email: this.state.email,
       password: this.state.password
     };
-    this.props.dispatch(createSession(sessionParams, this.props.navigator));
+    this.props.dispatch(createSession(sessionParams))
+    .then(() => {
+      this.props.dispatch(changeScene({
+        title: "Skills", component: <SkillsView />
+      }, this.props.navigator));
+    });
   }
 
   render() {
