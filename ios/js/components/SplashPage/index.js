@@ -7,9 +7,9 @@ import {
 } from "react-native";
 import SignupView from "../SignupView";
 import SigninView from "../SigninView";
-import globalStyles from "../../styles/global";
 import { connect } from "react-redux";
-
+import { styles as s } from "react-native-style-tachyons";
+import { gs, fonts } from "../../styles/global";
 import { changeScene, receiveSkills } from "../../actions";
 
 class SplashPage extends Component {
@@ -45,18 +45,22 @@ class SplashPage extends Component {
 
   render() {
     return (
-      <View style={globalStyles.container}>
-        <Text style={globalStyles.siteLogo}>Skillmaster</Text>
+      <View style={[gs.container, s["bg-blue"]]}>
+        <Text style={[s.white, s.tc, fonts.lobsterRegular, s.f1, s.ma1]}>
+          Skillmaster
+        </Text>
         <TouchableHighlight
           onPress={this.pushSignupView}
-          style={globalStyles.button}
+          style={[s.asc, s.jcc, s["bg-orange"], s.pv2, s.ph3, s.br2, s.mb2]}
         >
-          <Text style={globalStyles.buttonText}>GET STARTED </Text>
+          <Text style={[s.white, s.asc, s.b, s.f4]}>
+            GET STARTED
+          </Text>
         </TouchableHighlight>
         <TouchableHighlight
           onPress={this.pushSigninView}
         >
-          <Text style={globalStyles.basicText}>
+          <Text style={[s.white]}>
               Already have an account?
           </Text>
         </TouchableHighlight>

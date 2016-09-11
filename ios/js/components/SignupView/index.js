@@ -11,7 +11,8 @@ import { resetErrorMessage } from "../../actions";
 import Spinner from "../Spinner";
 import { createUser } from "../../apiUtils";
 import ErrorHandler from "../ErrorHandler";
-import globalStyles from "../../styles/global";
+import { styles as s } from "react-native-style-tachyons";
+import { gs, fonts } from "../../styles/global";
 
 class SignupView extends Component {
   constructor(props) {
@@ -45,40 +46,40 @@ class SignupView extends Component {
 
   render() {
     return (
-      <View style={globalStyles.container}>
+      <View style={[gs.container, s["bg-blue"]]}>
         <ErrorHandler />
-        <Text style={globalStyles.headerText}>Sign Up</Text>
+        <Text style={[fonts.lobsterRegular, s.white, s.f2]}>Sign Up</Text>
         <TextInput
-          style={globalStyles.input}
+          style={[gs.input, s.mt3]}
           placeholder="First Name"
           onChangeText={(text) => this.setState({ fname: text })}
         />
         <TextInput
-          style={globalStyles.input}
+          style={[gs.input]}
           placeholder="Last Name"
           onChangeText={(text) => this.setState({ lname: text })}
         />
         <TextInput
-          style={globalStyles.input}
+          style={[gs.input]}
           placeholder="Nickname"
           onChangeText={(text) => this.setState({ nickname: text })}
         />
         <TextInput
-          style={globalStyles.input}
+          style={[gs.input]}
           placeholder="Email"
           onChangeText={(text) => this.setState({ email: text })}
         />
         <TextInput
-          style={globalStyles.input}
+          style={[gs.input, s.mb3]}
           secureTextEntry={true}
           placeholder="Password"
           onChangeText={(text) => this.setState({ password: text })}
         />
         <TouchableHighlight
           onPress={this.onPressSubmit}
-          style={globalStyles.button}
+          style={[s.asc, s.jcc, s["bg-orange"], s.pv2, s.ph3, s.br2, s.mb3]}
         >
-          <Text style={globalStyles.buttonText}>SUBMIT</Text>
+          <Text style={[s.white, s.asc, s.b, s.f4]}>SUBMIT</Text>
         </TouchableHighlight>
         <Spinner />
       </View>

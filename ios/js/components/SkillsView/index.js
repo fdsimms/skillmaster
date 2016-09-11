@@ -8,13 +8,15 @@ import {
 
 import SkillCircle from "./SkillCircle";
 import { fetchSkills } from "../../apiUtils";
+import { styles as s } from "react-native-style-tachyons";
+import { gs } from "../../styles/global";
 
 const Skill = ({ skill }) => (
   <View
       key={skill.id}
-      style={{ alignSelf: "center", justifyContent: "center" }}>
+      style={[s.asc, s.jcc]}>
     <SkillCircle />
-    <Text style={{ color: "#AAAAAA", fontSize: 16, textAlign: "center", paddingBottom: 10 }}>
+    <Text style={[s.tc, s.darkGray, s.pb2]}>
       {skill.name}
     </Text>
   </View>
@@ -39,7 +41,7 @@ class SkillsView extends Component {
 
   render() {
     return (
-      <View style={{ flex: 1, justifyContent: "center", padding: 10, marginTop: 150 }}>
+      <View style={[gs.container, s.mt7]}>
         <Skills skills={this.props.skills} />
       </View>
     );

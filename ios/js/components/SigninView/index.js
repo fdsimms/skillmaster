@@ -11,7 +11,8 @@ import { resetErrorMessage } from "../../actions";
 import Spinner from "../Spinner";
 import { createSession } from "../../apiUtils";
 import ErrorHandler from "../ErrorHandler";
-import globalStyles from "../../styles/global";
+import { styles as s } from "react-native-style-tachyons";
+import { gs, fonts } from "../../styles/global";
 
 class SigninView extends Component {
   constructor(props) {
@@ -36,25 +37,29 @@ class SigninView extends Component {
 
   render() {
     return (
-      <View style={globalStyles.container}>
+      <View style={[gs.container, s["bg-blue"]]}>
         <ErrorHandler />
-        <Text style={globalStyles.headerText}> Sign In </Text>
+        <Text style={[fonts.lobsterRegular, s.white, s.f2]}>
+          Sign In
+        </Text>
         <TextInput
-          style={globalStyles.input}
+          style={[gs.input, s.mb1, s.mt3]}
           placeholder="Email"
           onChangeText={(text) => this.setState({ email: text })}
         />
         <TextInput
-          style={globalStyles.input}
+          style={[gs.input, s.mb3]}
           secureTextEntry={true}
           placeholder="Password"
           onChangeText={(text) => this.setState({ password: text })}
         />
         <TouchableHighlight
           onPress={this.onPressSubmit}
-          style={globalStyles.button}
+          style={[s.asc, s.jcc, s["bg-orange"], s.pv2, s.ph3, s.br2, s.mb3]}
         >
-          <Text style={globalStyles.buttonText}>SUBMIT</Text>
+          <Text style={[s.white, s.asc, s.b, s.f4]}>
+            SUBMIT
+          </Text>
         </TouchableHighlight>
         <Spinner />
       </View>
