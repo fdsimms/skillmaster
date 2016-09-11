@@ -10,6 +10,7 @@
     "react": "15.2.1",
     "react-dom": "^15.2.1",
     "react-native": "0.29.2",
+    "react-native-style-tachyons": "^2.5.0",
     "react-redux": "^4.4.5",
     "react-router": "^2.5.2",
     "redux": "^3.5.2",
@@ -23,6 +24,8 @@
     "eslint-plugin-react": "^5.2.2"
   },
   "rnpm": {
-    "assets": ["./fonts/lobster"]
+    "assets": [
+      "./fonts/lobster"
+    ]
   }
 }
