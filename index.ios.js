@@ -13,7 +13,8 @@ NativeTachyons.build({
       orange: "#FAC219",
       white: "#FFFFFF",
       black: "#000000",
-      red: "#FF0000"
+      red: "#FF0000",
+      darkGray: "#AAAAAA"
     }
   }
 }, StyleSheet);
