@@ -2,12 +2,12 @@ import React, { PropTypes } from "react";
 import { connect } from "react-redux";
 import { ActivityIndicator } from "react-native";
 
-const Spinner = ({ showSpinner, size = "large" }) => (
+const Spinner = ({ showSpinner, size = "large", color = "#FFFFFF" }) => (
   showSpinner ? (
     <ActivityIndicator
       animating={showSpinner}
       size={size}
-      color="#FFFFFF"
+      color={color}
     />
   ) : null
 );
