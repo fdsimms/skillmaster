@@ -1,19 +1,16 @@
-import React from "react";
 import {
   showSpinner,
   hideSpinner,
   updateErrorMessage,
   receiveCurrentUser,
-  changeScene,
   receiveSkills
 } from "./actions";
-import SkillsView from "./components/SkillsView";
 import AsyncStorage from "redux";
 
-export function createSession(sessionParams, navigator) {
+export function createSession(sessionParams) {
   return (dispatch) => {
     dispatch(showSpinner());
-    fetch("http://localhost:3000/api/session", {
+    return fetch("http://localhost:3000/api/session", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -41,10 +38,10 @@ export function createSession(sessionParams, navigator) {
   };
 }
 
-export function createUser(userParams, navigator) {
+export function createUser(userParams) {
   return (dispatch) => {
     dispatch(showSpinner());
-    fetch("http://localhost:3000/api/users", {
+    return fetch("http://localhost:3000/api/users", {
       method: "POST",
       headers: {
         Accept: "application/json",
