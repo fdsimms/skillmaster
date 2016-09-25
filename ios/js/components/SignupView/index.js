@@ -7,7 +7,13 @@ import {
   TouchableHighlight
 } from "react-native";
 
-import { resetErrorMessage, changeScene } from "../../actions";
+import {
+  resetErrorMessage,
+  updateErrorMessage,
+  showSpinner,
+  hideSpinner,
+  changeScene 
+} from "../../actions";
 import Spinner from "../Spinner";
 import { createUser } from "../../apiUtils";
 import SkillsView from "../SkillsView";
@@ -42,12 +48,16 @@ class SignupView extends Component {
       password: this.state.password,
       email: this.state.email
     };
+
+    this.props.dispatch(showSpinner());
     this.props.dispatch(createUser(userParams))
     .then(() => {
       this.props.dispatch(changeScene({
         title: "Skills", component: <SkillsView />
       }, this.props.navigator));
-    });
+    })
+    .catch(() => this.props.dispatch(updateErrorMessage("Error")))
+    .finally(this.props.dispatch(hideSpinner()));
   }
 
   render() {

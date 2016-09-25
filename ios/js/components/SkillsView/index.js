@@ -8,6 +8,11 @@ import {
 
 import SkillCircle from "./SkillCircle";
 import { fetchSkills } from "../../apiUtils";
+import {
+  showSpinner,
+  hideSpinner,
+  updateErrorMessage
+} from "../../actions";
 import { styles as s } from "react-native-style-tachyons";
 import { gs } from "../../styles/global";
 
@@ -34,8 +39,15 @@ const Skills = ({ skills }) => {
 
 class SkillsView extends Component {
   componentDidMount() {
+    this.fetchSkillsIfNotFetched();
+  }
+
+  fetchSkillsIfNotFetched() {
     if (!this.props.skills.length) {
-      this.props.dispatch(fetchSkills());
+      this.props.dispatch(showSpinner());
+      this.props.dispatch(fetchSkills())
+      .catch(() => this.props.dispatch(updateErrorMessage("Error")))
+      .finally(this.props.dispatch(hideSpinner()));
     }
   }
 
