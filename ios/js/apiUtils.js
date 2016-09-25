@@ -1,15 +1,10 @@
 import {
-  showSpinner,
-  hideSpinner,
-  updateErrorMessage,
   receiveCurrentUser,
   receiveSkills
 } from "./actions";
-import AsyncStorage from "redux";
 
 export function createSession(sessionParams) {
   return (dispatch) => {
-    dispatch(showSpinner());
     return fetch("http://localhost:3000/api/session", {
       method: "POST",
       headers: {
@@ -27,15 +22,12 @@ export function createSession(sessionParams) {
       if (!response.ok) { throw Error(response.statusText); }
       return response.json();
     })
-    .then(json => { dispatch(receiveCurrentUser(json)); })
-    .catch(() => dispatch(updateErrorMessage("Error")))
-    .finally(() => { dispatch(hideSpinner()); });
+    .then(json => { dispatch(receiveCurrentUser(json)); });
   };
 }
 
 export function createUser(userParams) {
   return (dispatch) => {
-    dispatch(showSpinner());
     return fetch("http://localhost:3000/api/users", {
       method: "POST",
       headers: {
@@ -56,16 +48,13 @@ export function createUser(userParams) {
       if (!response.ok) { throw Error(response.statusText); }
       return response.json();
     })
-    .then(json => dispatch(receiveCurrentUser(json)))
-    .catch(() => dispatch(updateErrorMessage("Error")))
-    .finally(() => dispatch(hideSpinner()));
+    .then(json => dispatch(receiveCurrentUser(json)));
   };
 }
 
 export function fetchSkills() {
   return (dispatch) => {
-    dispatch(showSpinner());
-    fetch("http://localhost:3000/api/skills", {
+    return fetch("http://localhost:3000/api/skills", {
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -78,16 +67,12 @@ export function fetchSkills() {
     })
     .then(json => {
       dispatch(receiveSkills(json));
-      AsyncStorage.setItem("skills", json);
-    })
-    .catch(() => dispatch(updateErrorMessage("Error")))
-    .finally(() => { dispatch(hideSpinner()); });
+    });
   };
 }
 
 export function fetchSkill(skillId) {
   return (dispatch) => {
-    dispatch(showSpinner());
     fetch(`http://localhost:3000/api/skills/${skillId}`, {
       method: "GET",
       headers: {
@@ -101,9 +86,6 @@ export function fetchSkill(skillId) {
     })
     .then(json => {
       dispatch(receiveSkills(json));
-      AsyncStorage.setItem(`skills/${skillId}`, json);
-    })
-    .catch(() => dispatch(updateErrorMessage("Error")))
-    .finally(() => { dispatch(hideSpinner()); });
+    });
   };
 }
