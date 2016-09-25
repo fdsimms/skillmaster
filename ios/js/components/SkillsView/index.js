@@ -6,7 +6,6 @@ import {
   ListView
 } from "react-native";
 
-import SkillCircle from "./SkillCircle";
 import { fetchSkills } from "../../apiUtils";
 import {
   showSpinner,
@@ -20,7 +19,6 @@ const Skill = ({ skill }) => (
   <View
       key={skill.id}
       style={[s.asc, s.jcc]}>
-    <SkillCircle />
     <Text style={[s.tc, s.darkGray, s.pb2]}>
       {skill.name}
     </Text>
