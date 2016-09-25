@@ -5,7 +5,7 @@ import {
 
 export function createSession(sessionParams) {
   return (dispatch) => {
-    return fetch("http://localhost:3000/api/session", {
+    return fetch("https://skillmaster-api.herokuapp.com/api/session", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -28,7 +28,7 @@ export function createSession(sessionParams) {
 
 export function createUser(userParams) {
   return (dispatch) => {
-    return fetch("http://localhost:3000/api/users", {
+    return fetch("https://skillmaster-api.herokuapp.com/api/users", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -54,7 +54,7 @@ export function createUser(userParams) {
 
 export function fetchSkills() {
   return (dispatch) => {
-    return fetch("http://localhost:3000/api/skills", {
+    return fetch("https://skillmaster-api.herokuapp.com/api/skills", {
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -73,7 +73,7 @@ export function fetchSkills() {
 
 export function fetchSkill(skillId) {
   return (dispatch) => {
-    fetch(`http://localhost:3000/api/skills/${skillId}`, {
+    return fetch(`https://skillmaster-api.herokuapp.com/api/skills/${skillId}`, {
       method: "GET",
       headers: {
         Accept: "application/json",
