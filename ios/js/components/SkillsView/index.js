@@ -27,7 +27,7 @@ const Skill = ({ skill }) => (
 
 const Skills = ({ skills }) => {
   const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
-  return skills.length > 0 ? (
+  return Object.keys(skills).length > 0 ? (
     <ListView
       dataSource={ds.cloneWithRows(skills)}
       renderRow={skill => <Skill skill={skill} />}
@@ -65,7 +65,7 @@ const mapStateToProps = (state) => (
 SkillsView.propTypes = {
   dispatch: PropTypes.func.isRequired,
   navigator: PropTypes.object.isRequired,
-  skills: PropTypes.array.isRequired
+  skills: PropTypes.object.isRequired
 };
 
 export default connect(mapStateToProps)(SkillsView);

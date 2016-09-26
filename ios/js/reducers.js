@@ -50,10 +50,14 @@ function currentScene(state = { title: "Skillmaster", component: SplashPage }, a
   }
 }
 
-function skills(state = [], action) {
+function skills(state = {}, action) {
   switch (action.type) {
   case RECEIVE_SKILLS:
-    return action.skills;
+    const newSkills = Object.assign({}, state);
+    action.skills.forEach(skill => {
+      newSkills[skill.id] = skill;
+    });
+    return newSkills;
   default:
     return state;
   }
