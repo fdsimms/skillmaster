@@ -6,9 +6,9 @@ import { CHANGE_SCENE } from "./actions";
 function navigatorIOSMiddleware() {
   return (next) => (action) => {
     if (action.type === CHANGE_SCENE) {
-      const { title, component } = action.currentScene;
+      const { title, component, passProps } = action.currentScene;
 
-      action.navigator.push({ title, component: component.type });
+      action.navigator.push({ title, component: component.type, passProps });
     }
     return next(action);
   };
