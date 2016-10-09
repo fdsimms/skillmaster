@@ -57,7 +57,9 @@ class SkillsView extends Component {
 
   onSelectSkill(skill) {
     this.props.dispatch(changeScene({
-      title: skill.name, component: <SkillView skillId={skill.id} />
+      title: skill.name,
+      component: <SkillView />,
+      passProps: { skillId: skill.id }
     }, this.props.navigator));
   }
 
