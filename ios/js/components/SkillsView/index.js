@@ -25,7 +25,7 @@ const Skill = ({ skill, onSelectSkill }) => (
     <TouchableHighlight onPress={() => onSelectSkill(skill)}>
       <View style={[s["bg-orange"], s.h3, s.w3, s.br4, s.asc]} />
     </TouchableHighlight>
-    <Text style={[s.tc, s.darkGray, s.pb2]}>
+    <Text style={[s.tc, s.white, s.pb2]}>
       {skill.name}
     </Text>
   </View>
@@ -35,6 +35,7 @@ const Skills = ({ skills, onSelectSkill }) => {
   const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
   return Object.keys(skills).length > 0 ? (
     <ListView
+      style={[s.ass, s.mt2]}
       dataSource={ds.cloneWithRows(skills)}
       renderRow={skill => <Skill skill={skill} onSelectSkill={onSelectSkill} />}
     />
@@ -65,7 +66,7 @@ class SkillsView extends Component {
 
   render() {
     return (
-      <View style={[gs.container, s.mt7]}>
+      <View style={[gs.container, s["bg-blue"], s.pt6]}>
         <Skills
           skills={this.props.skills}
           onSelectSkill={this.onSelectSkill.bind(this)}
