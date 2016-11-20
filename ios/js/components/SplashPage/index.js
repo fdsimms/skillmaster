@@ -2,15 +2,17 @@ import React, { PropTypes, Component } from "react";
 import {
   Text,
   View,
-  TouchableHighlight,
-  AsyncStorage
+  TouchableHighlight
 } from "react-native";
 import SignupView from "../SignupView";
 import SigninView from "../SigninView";
+import SkillsView from "../SkillsView";
 import { connect } from "react-redux";
 import { styles as s } from "react-native-style-tachyons";
 import { gs, fonts } from "../../styles/global";
-import { changeScene, receiveSkills } from "../../actions";
+import { changeScene } from "../../actions";
+import { getAuthHeaders } from "../../storageUtils";
+import { validateToken } from "../../apiUtils";
 
 class SplashPage extends Component {
   constructor(props) {
@@ -20,11 +22,22 @@ class SplashPage extends Component {
   }
 
   componentWillMount() {
-    AsyncStorage.getItem("skills").then(skills => {
-      if (skills) {
-        this.props.dispatch(receiveSkills(skills));
-      }
-    });
+    getAuthHeaders()
+      .then(headers => {
+        return validateToken({
+          token: headers["access-token"],
+          uid: headers.uid,
+          client: headers.client
+        });
+      })
+      .then(response => {
+        if (!response.success) {
+          throw "Error";
+        } else {
+          this.pushSkillsView();
+          return response;
+        }
+      });
   }
 
   pushSignupView() {
@@ -32,6 +45,14 @@ class SplashPage extends Component {
     dispatch(changeScene({
       title: "Sign Up",
       component: <SignupView />
+    }, navigator));
+  }
+
+  pushSkillsView() {
+    const { navigator, dispatch } = this.props;
+    dispatch(changeScene({
+      title: "Skills",
+      component: <SkillsView />
     }, navigator));
   }
 
