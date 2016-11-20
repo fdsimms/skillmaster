@@ -54,11 +54,11 @@ class SigninView extends Component {
     return (
       <View style={[gs.container, s["bg-blue"]]}>
         <ErrorHandler />
-        <Text style={[fonts.lobsterRegular, s.white, s.f2]}>
+        <Text style={[fonts.lobsterRegular, s.white, s.f2, s.mb1]}>
           Sign In
         </Text>
         <TextInput
-          style={[gs.input, s.mb1, s.mt3]}
+          style={[gs.input]}
           placeholder="Email"
           onChangeText={(text) => this.setState({ email: text })}
         />

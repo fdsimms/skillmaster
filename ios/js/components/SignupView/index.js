@@ -12,7 +12,7 @@ import {
   updateErrorMessage,
   showSpinner,
   hideSpinner,
-  changeScene 
+  changeScene
 } from "../../actions";
 import Spinner from "../Spinner";
 import { createUser } from "../../apiUtils";
@@ -26,10 +26,8 @@ class SignupView extends Component {
     super(props);
     this.onPressSubmit = this.onPressSubmit.bind(this);
     this.state = {
-      nickname: null,
-      fname: null,
-      lname: null,
       password: null,
+      confirmPassword: null,
       email: null
     };
   }
@@ -42,11 +40,9 @@ class SignupView extends Component {
 
   onPressSubmit() {
     const userParams = {
-      nickname: this.state.nickname,
-      fname: this.state.fname,
-      lname: this.state.lname,
       password: this.state.password,
-      email: this.state.email
+      email: this.state.email,
+      confirmPassword: this.state.confirmPassword
     };
 
     this.props.dispatch(showSpinner());
@@ -64,32 +60,23 @@ class SignupView extends Component {
     return (
       <View style={[gs.container, s["bg-blue"]]}>
         <ErrorHandler />
-        <Text style={[fonts.lobsterRegular, s.white, s.f2]}>Sign Up</Text>
-        <TextInput
-          style={[gs.input, s.mt3]}
-          placeholder="First Name"
-          onChangeText={(text) => this.setState({ fname: text })}
-        />
-        <TextInput
-          style={[gs.input]}
-          placeholder="Last Name"
-          onChangeText={(text) => this.setState({ lname: text })}
-        />
-        <TextInput
-          style={[gs.input]}
-          placeholder="Nickname"
-          onChangeText={(text) => this.setState({ nickname: text })}
-        />
+        <Text style={[fonts.lobsterRegular, s.white, s.f2, s.mb1]}>Sign Up</Text>
         <TextInput
           style={[gs.input]}
           placeholder="Email"
           onChangeText={(text) => this.setState({ email: text })}
         />
         <TextInput
-          style={[gs.input, s.mb3]}
+          style={[gs.input]}
           secureTextEntry={true}
           placeholder="Password"
           onChangeText={(text) => this.setState({ password: text })}
+        />
+        <TextInput
+          style={[gs.input, s.mb3]}
+          secureTextEntry={true}
+          placeholder="Confirm Password"
+          onChangeText={(text) => this.setState({ confirmPassword: text })}
         />
         <TouchableHighlight
           onPress={this.onPressSubmit}

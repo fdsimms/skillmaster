@@ -38,7 +38,7 @@ export function createUser(userParams) {
       body: JSON.stringify({
         password: userParams.password,
         email: userParams.email,
-        password_confirmation: userParams.password,
+        password_confirmation: userParams.confirmPassword,
         confirm_success_url: "localhost:3000"
       })
     })
